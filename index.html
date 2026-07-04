@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="es" class="dark">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Quantory | Ciencia de Datos, IA y Tecnología</title>
+<meta name="description" content="Quantory transforma datos en decisiones inteligentes: análisis estadísticos, automatizaciones con IA y desarrollo de páginas web." />
+<link rel="icon" type="image/png" href="Imagenes/Quantory_ícono.png" />
+
+<!-- Fuentes -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Sora:wght@500;600;700;800&display=swap" rel="stylesheet" />
+
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        fontFamily: {
+          sans: ["Inter", "sans-serif"],
+          display: ["Sora", "sans-serif"],
+        },
+        colors: {
+          qblue: { DEFAULT: "#3b82f6", dark: "#2563eb" },
+          qpurple: { DEFAULT: "#8b5cf6", dark: "#7c3aed" },
+          qdark: { DEFAULT: "#030712", 2: "#0b0f19", 3: "#111827" },
+        },
+      },
+    },
+  };
+</script>
+
+<!-- AOS.js -->
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+
+<!-- Font Awesome (íconos de marca) -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+
+<!-- Devicon (logos de tecnologías) -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
+
+<!-- Estilos propios -->
+<link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body class="bg-white text-slate-800 dark:bg-qdark dark:text-slate-200 antialiased">
+
+<!-- ===================== LOADER ===================== -->
+<div id="loader">
+  <div class="flex flex-col items-center gap-4">
+    <div class="loader-ring"></div>
+    <span class="font-display text-sm tracking-widest text-slate-400 uppercase">Quantory</span>
+  </div>
+</div>
+
+<!-- ===================== NAVBAR ===================== -->
+<header id="navbar" class="fixed top-0 inset-x-0 z-40 transition-shadow duration-300">
+  <nav class="glass border-b border-white/5">
+    <div class="max-w-7xl mx-auto px-5 sm:px-8 flex items-center justify-between py-2.5">
+      <a href="#inicio" class="flex items-center gap-2">
+        <img src="Imagenes/Quantory_logo_cropped.png" alt="Quantory" class="h-9 sm:h-11 w-auto dark:hidden" />
+        <img src="Imagenes/Quantory_logo_cropped_oscuro.png" alt="Quantory" class="hidden dark:block h-9 sm:h-11 w-auto" />
+      </a>
+
+      <ul class="hidden lg:flex items-center gap-8 font-medium text-sm">
+        <li><a href="#inicio" class="nav-link">Inicio</a></li>
+        <li><a href="#servicios" class="nav-link">Servicios</a></li>
+        <li><a href="#proyectos" class="nav-link">Proyectos</a></li>
+        <li><a href="#tecnologias" class="nav-link">Tecnologías</a></li>
+        <li><a href="#nosotros" class="nav-link">Nosotros</a></li>
+        <li><a href="#contacto" class="nav-link">Contacto</a></li>
+      </ul>
+
+      <div class="flex items-center gap-3">
+        <button data-theme-toggle class="w-9 h-9 rounded-full flex items-center justify-center border border-white/10 hover:border-qblue/60 transition-colors" aria-label="Cambiar modo oscuro/claro"></button>
+        <a href="#contacto" class="hidden sm:inline-flex btn-primary text-white text-sm font-semibold px-5 py-2.5 rounded-full">Contáctanos</a>
+        <button id="menu-btn" aria-expanded="false" aria-label="Abrir menú" class="lg:hidden w-9 h-9 rounded-full flex items-center justify-center border border-white/10">
+          <i data-lucide="menu" class="w-5 h-5"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Menú móvil -->
+    <div id="mobile-menu" class="lg:hidden px-5 pb-4">
+      <ul class="flex flex-col gap-3 pt-2 font-medium text-sm">
+        <li><a href="#inicio" class="nav-link block py-1">Inicio</a></li>
+        <li><a href="#servicios" class="nav-link block py-1">Servicios</a></li>
+        <li><a href="#proyectos" class="nav-link block py-1">Proyectos</a></li>
+        <li><a href="#tecnologias" class="nav-link block py-1">Tecnologías</a></li>
+        <li><a href="#nosotros" class="nav-link block py-1">Nosotros</a></li>
+        <li><a href="#contacto" class="nav-link block py-1">Contacto</a></li>
+      </ul>
+    </div>
+  </nav>
+</header>
+
+<main>
+
+  <!-- ===================== HERO ===================== -->
+  <section id="inicio" class="relative min-h-screen flex items-center overflow-hidden pt-24">
+    <div id="tsparticles"></div>
+    <div class="blob w-72 h-72 bg-qblue -top-10 -left-10"></div>
+    <div class="blob w-80 h-80 bg-qpurple bottom-0 right-0"></div>
+
+    <div class="relative z-10 max-w-7xl mx-auto px-5 sm:px-8 grid lg:grid-cols-2 gap-14 items-center py-16">
+      <div data-aos="fade-up">
+        <span class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass text-xs font-semibold tracking-wide text-qblue dark:text-blue-300 mb-6">
+          <i data-lucide="sparkles" class="w-3.5 h-3.5"></i>
+          Analytics &bull; Technology &bull; AI
+        </span>
+        <h1 class="font-display text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight mb-6">
+          Transformamos <span class="gradient-text">datos</span> en decisiones inteligentes
+        </h1>
+        <p class="text-lg text-slate-600 dark:text-slate-400 mb-10 max-w-xl">
+          Quantory es una empresa tecnológica especializada en ciencia de datos, estadística e inteligencia artificial. Convertimos información compleja en valor real para tu negocio.
+        </p>
+        <div class="flex flex-wrap gap-4">
+          <a href="#servicios" class="btn-primary text-white font-semibold px-7 py-3.5 rounded-full inline-flex items-center gap-2">
+            Ver servicios <i data-lucide="arrow-right" class="w-4 h-4"></i>
+          </a>
+          <a href="#contacto" class="btn-outline font-semibold px-7 py-3.5 rounded-full inline-flex items-center gap-2">
+            Contactar
+          </a>
+        </div>
+
+        <div class="flex items-center gap-8 mt-12">
+          <div>
+            <p class="font-display text-3xl font-bold gradient-text">+50</p>
+            <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">Proyectos entregados</p>
+          </div>
+          <div class="w-px h-10 bg-slate-300 dark:bg-white/10"></div>
+          <div>
+            <p class="font-display text-3xl font-bold gradient-text">98%</p>
+            <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">Clientes satisfechos</p>
+          </div>
+          <div class="w-px h-10 bg-slate-300 dark:bg-white/10"></div>
+          <div>
+            <p class="font-display text-3xl font-bold gradient-text">24/7</p>
+            <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">Soporte técnico</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="relative flex justify-center" data-aos="zoom-in" data-aos-delay="150">
+        <div class="absolute w-72 h-72 sm:w-96 sm:h-96 bg-gradient-to-tr from-qblue to-qpurple rounded-full blur-3xl opacity-30"></div>
+        <img src="Imagenes/Quantory_ícono.png" alt="Quantory AI" class="relative w-56 sm:w-72 lg:w-80 drop-shadow-2xl" style="animation: float 6s ease-in-out infinite" />
+      </div>
+    </div>
+
+    <a href="#servicios" class="absolute bottom-8 left-1/2 -translate-x-1/2 text-slate-400 hover:text-qblue transition-colors" aria-label="Desplazarse hacia abajo">
+      <i data-lucide="chevron-down" class="w-6 h-6 animate-bounce"></i>
+    </a>
+  </section>
+
+  <!-- ===================== SERVICIOS ===================== -->
+  <section id="servicios" class="py-24 px-5 sm:px-8 relative">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center max-w-2xl mx-auto mb-16" data-aos="fade-up">
+        <span class="text-qblue dark:text-blue-400 font-semibold text-sm tracking-widest uppercase">Nuestros servicios</span>
+        <h2 class="font-display text-3xl sm:text-4xl font-bold mt-3 mb-4">Soluciones que impulsan tu negocio</h2>
+        <p class="text-slate-600 dark:text-slate-400">Combinamos estadística, inteligencia artificial y desarrollo web para convertir tus datos en resultados medibles.</p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-6">
+        <div class="glass card-hover rounded-2xl p-8" data-aos="fade-up" data-aos-delay="0">
+          <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-qblue to-qpurple flex items-center justify-center mb-6">
+            <i data-lucide="bar-chart-3" class="w-7 h-7 text-white"></i>
+          </div>
+          <h3 class="font-display text-xl font-semibold mb-3">Análisis Estadísticos</h3>
+          <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
+            Modelado estadístico, pruebas de hipótesis y análisis predictivo para descubrir patrones ocultos y tomar decisiones respaldadas por datos.
+          </p>
+        </div>
+
+        <div class="glass card-hover rounded-2xl p-8" data-aos="fade-up" data-aos-delay="100">
+          <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-qpurple to-qblue flex items-center justify-center mb-6">
+            <i data-lucide="bot" class="w-7 h-7 text-white"></i>
+          </div>
+          <h3 class="font-display text-xl font-semibold mb-3">Automatizaciones con IA</h3>
+          <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
+            Diseñamos flujos inteligentes y modelos de machine learning que automatizan procesos, reducen costos y aceleran la operación.
+          </p>
+        </div>
+
+        <div class="glass card-hover rounded-2xl p-8" data-aos="fade-up" data-aos-delay="200">
+          <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-qblue to-qpurple flex items-center justify-center mb-6">
+            <i data-lucide="code-2" class="w-7 h-7 text-white"></i>
+          </div>
+          <h3 class="font-display text-xl font-semibold mb-3">Desarrollo de Páginas Web</h3>
+          <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
+            Sitios web modernos, rápidos y responsivos que representan tu marca y convierten visitantes en clientes.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== PROYECTOS ===================== -->
+  <section id="proyectos" class="py-24 px-5 sm:px-8 bg-slate-50 dark:bg-qdark-2/40 relative">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center max-w-2xl mx-auto mb-12" data-aos="fade-up">
+        <span class="text-qblue dark:text-blue-400 font-semibold text-sm tracking-widest uppercase">Portafolio</span>
+        <h2 class="font-display text-3xl sm:text-4xl font-bold mt-3 mb-4">Catálogo de proyectos</h2>
+        <p class="text-slate-600 dark:text-slate-400">Una muestra de cómo ayudamos a nuestros clientes a convertir datos en valor.</p>
+      </div>
+
+      <!-- Filtros -->
+      <div class="flex flex-wrap justify-center gap-3 mb-12" data-aos="fade-up">
+        <button class="filter-btn active px-5 py-2 rounded-full text-sm font-medium border border-slate-300 dark:border-white/10" data-filter="todos">Todos</button>
+        <button class="filter-btn px-5 py-2 rounded-full text-sm font-medium border border-slate-300 dark:border-white/10" data-filter="datos">Ciencia de Datos</button>
+        <button class="filter-btn px-5 py-2 rounded-full text-sm font-medium border border-slate-300 dark:border-white/10" data-filter="ia">Inteligencia Artificial</button>
+        <button class="filter-btn px-5 py-2 rounded-full text-sm font-medium border border-slate-300 dark:border-white/10" data-filter="web">Desarrollo Web</button>
+      </div>
+
+      <!-- Grid de proyectos -->
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+
+        <article class="project-card glass card-hover rounded-2xl overflow-hidden"
+          data-category="datos" data-name="Predicción de Demanda Retail"
+          data-tech="Python, Pandas, Power BI" data-icon="trending-up"
+          data-gradient="bg-gradient-to-br from-qblue to-qpurple"
+          data-full-desc="Modelo predictivo que anticipa la demanda de productos por temporada, reduciendo el quiebre de stock en un 27% mediante series de tiempo y validación estadística."
+          data-aos="fade-up">
+          <div class="bg-gradient-to-br from-qblue to-qpurple h-44 flex items-center justify-center">
+            <i data-lucide="trending-up" class="w-12 h-12 text-white/90"></i>
+          </div>
+          <div class="p-6">
+            <span class="text-xs font-semibold text-qblue dark:text-blue-400 uppercase tracking-wide">Ciencia de Datos</span>
+            <h3 class="font-display text-lg font-semibold mt-2 mb-2">Predicción de Demanda Retail</h3>
+            <p class="text-sm text-slate-600 dark:text-slate-400 mb-4">Forecast de ventas por temporada con series de tiempo para optimizar inventario.</p>
+            <div class="flex flex-wrap gap-2 mb-5">
+              <span class="px-3 py-1 text-xs rounded-full bg-blue-500/10 text-blue-500 dark:text-blue-300 border border-blue-500/20">Python</span>
+              <span class="px-3 py-1 text-xs rounded-full bg-blue-500/10 text-blue-500 dark:text-blue-300 border border-blue-500/20">Pandas</span>
+              <span class="px-3 py-1 text-xs rounded-full bg-blue-500/10 text-blue-500 dark:text-blue-300 border border-blue-500/20">Power BI</span>
+            </div>
+            <button data-open-modal class="text-sm font-semibold text-qblue dark:text-blue-400 inline-flex items-center gap-1.5 hover:gap-2.5 transition-all">
+              Ver detalles <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+            </button>
+          </div>
+        </article>
+
+        <article class="project-card glass card-hover rounded-2xl overflow-hidden"
+          data-category="ia" data-name="Chatbot de Atención al Cliente"
+          data-tech="Python, TensorFlow, NLP" data-icon="bot"
+          data-gradient="bg-gradient-to-br from-qpurple to-qblue"
+          data-full-desc="Asistente virtual con procesamiento de lenguaje natural que automatiza el 70% de las consultas frecuentes, integrado a WhatsApp y sitio web."
+          data-aos="fade-up" data-aos-delay="80">
+          <div class="bg-gradient-to-br from-qpurple to-qblue h-44 flex items-center justify-center">
+            <i data-lucide="bot" class="w-12 h-12 text-white/90"></i>
+          </div>
+          <div class="p-6">
+            <span class="text-xs font-semibold text-qpurple dark:text-purple-400 uppercase tracking-wide">Inteligencia Artificial</span>
+            <h3 class="font-display text-lg font-semibold mt-2 mb-2">Chatbot de Atención al Cliente</h3>
+            <p class="text-sm text-slate-600 dark:text-slate-400 mb-4">Asistente con NLP que automatiza respuestas y mejora los tiempos de atención.</p>
+            <div class="flex flex-wrap gap-2 mb-5">
+              <span class="px-3 py-1 text-xs rounded-full bg-purple-500/10 text-purple-500 dark:text-purple-300 border border-purple-500/20">Python</span>
+              <span class="px-3 py-1 text-xs rounded-full bg-purple-500/10 text-purple-500 dark:text-purple-300 border border-purple-500/20">TensorFlow</span>
+              <span class="px-3 py-1 text-xs rounded-full bg-purple-500/10 text-purple-500 dark:text-purple-300 border border-purple-500/20">NLP</span>
+            </div>
+            <button data-open-modal class="text-sm font-semibold text-qblue dark:text-blue-400 inline-flex items-center gap-1.5 hover:gap-2.5 transition-all">
+              Ver detalles <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+            </button>
+          </div>
+        </article>
+
+        <article class="project-card glass card-hover rounded-2xl overflow-hidden"
+          data-category="web" data-name="Dashboard Financiero Interactivo"
+          data-tech="JavaScript, Chart.js, Tailwind" data-icon="layout-dashboard"
+          data-gradient="bg-gradient-to-br from-cyan-500 to-qblue"
+          data-full-desc="Panel financiero en tiempo real con visualización de KPIs, ingresos y proyecciones, diseñado con una interfaz moderna y totalmente responsiva."
+          data-aos="fade-up" data-aos-delay="160">
+          <div class="bg-gradient-to-br from-cyan-500 to-qblue h-44 flex items-center justify-center">
+            <i data-lucide="layout-dashboard" class="w-12 h-12 text-white/90"></i>
+          </div>
+          <div class="p-6">
+            <span class="text-xs font-semibold text-cyan-500 dark:text-cyan-400 uppercase tracking-wide">Desarrollo Web</span>
+            <h3 class="font-display text-lg font-semibold mt-2 mb-2">Dashboard Financiero Interactivo</h3>
+            <p class="text-sm text-slate-600 dark:text-slate-400 mb-4">Visualización de KPIs financieros en tiempo real con gráficos interactivos.</p>
+            <div class="flex flex-wrap gap-2 mb-5">
+              <span class="px-3 py-1 text-xs rounded-full bg-cyan-500/10 text-cyan-500 dark:text-cyan-300 border border-cyan-500/20">JavaScript</span>
+              <span class="px-3 py-1 text-xs rounded-full bg-cyan-500/10 text-cyan-500 dark:text-cyan-300 border border-cyan-500/20">Chart.js</span>
+              <span class="px-3 py-1 text-xs rounded-full bg-cyan-500/10 text-cyan-500 dark:text-cyan-300 border border-cyan-500/20">Tailwind</span>
+            </div>
+            <button data-open-modal class="text-sm font-semibold text-qblue dark:text-blue-400 inline-flex items-center gap-1.5 hover:gap-2.5 transition-all">
+              Ver detalles <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+            </button>
+          </div>
+        </article>
+
+        <article class="project-card glass card-hover rounded-2xl overflow-hidden"
+          data-category="ia" data-name="Detección de Fraude Financiero"
+          data-tech="Python, Scikit-learn, SQL" data-icon="shield-check"
+          data-gradient="bg-gradient-to-br from-qpurple to-cyan-500"
+          data-full-desc="Sistema de machine learning que identifica transacciones sospechosas en tiempo real, con una precisión del 96% y bajo nivel de falsos positivos."
+          data-aos="fade-up">
+          <div class="bg-gradient-to-br from-qpurple to-cyan-500 h-44 flex items-center justify-center">
+            <i data-lucide="shield-check" class="w-12 h-12 text-white/90"></i>
+          </div>
+          <div class="p-6">
+            <span class="text-xs font-semibold text-qpurple dark:text-purple-400 uppercase tracking-wide">Inteligencia Artificial</span>
+            <h3 class="font-display text-lg font-semibold mt-2 mb-2">Detección de Fraude Financiero</h3>
+            <p class="text-sm text-slate-600 dark:text-slate-400 mb-4">Modelo de clasificación que detecta transacciones sospechosas en tiempo real.</p>
+            <div class="flex flex-wrap gap-2 mb-5">
+              <span class="px-3 py-1 text-xs rounded-full bg-purple-500/10 text-purple-500 dark:text-purple-300 border border-purple-500/20">Python</span>
+              <span class="px-3 py-1 text-xs rounded-full bg-purple-500/10 text-purple-500 dark:text-purple-300 border border-purple-500/20">Scikit-learn</span>
+              <span class="px-3 py-1 text-xs rounded-full bg-purple-500/10 text-purple-500 dark:text-purple-300 border border-purple-500/20">SQL</span>
+            </div>
+            <button data-open-modal class="text-sm font-semibold text-qblue dark:text-blue-400 inline-flex items-center gap-1.5 hover:gap-2.5 transition-all">
+              Ver detalles <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+            </button>
+          </div>
+        </article>
+
+        <article class="project-card glass card-hover rounded-2xl overflow-hidden"
+          data-category="web" data-name="Sitio Web Corporativo E-commerce"
+          data-tech="HTML, CSS, JavaScript" data-icon="shopping-cart"
+          data-gradient="bg-gradient-to-br from-qblue to-cyan-500"
+          data-full-desc="Tienda en línea con catálogo dinámico, carrito de compras y checkout optimizado, diseñada con foco en velocidad y conversión."
+          data-aos="fade-up" data-aos-delay="80">
+          <div class="bg-gradient-to-br from-qblue to-cyan-500 h-44 flex items-center justify-center">
+            <i data-lucide="shopping-cart" class="w-12 h-12 text-white/90"></i>
+          </div>
+          <div class="p-6">
+            <span class="text-xs font-semibold text-cyan-500 dark:text-cyan-400 uppercase tracking-wide">Desarrollo Web</span>
+            <h3 class="font-display text-lg font-semibold mt-2 mb-2">Sitio Web Corporativo E-commerce</h3>
+            <p class="text-sm text-slate-600 dark:text-slate-400 mb-4">Tienda en línea rápida y responsiva con checkout optimizado para conversión.</p>
+            <div class="flex flex-wrap gap-2 mb-5">
+              <span class="px-3 py-1 text-xs rounded-full bg-cyan-500/10 text-cyan-500 dark:text-cyan-300 border border-cyan-500/20">HTML</span>
+              <span class="px-3 py-1 text-xs rounded-full bg-cyan-500/10 text-cyan-500 dark:text-cyan-300 border border-cyan-500/20">CSS</span>
+              <span class="px-3 py-1 text-xs rounded-full bg-cyan-500/10 text-cyan-500 dark:text-cyan-300 border border-cyan-500/20">JavaScript</span>
+            </div>
+            <button data-open-modal class="text-sm font-semibold text-qblue dark:text-blue-400 inline-flex items-center gap-1.5 hover:gap-2.5 transition-all">
+              Ver detalles <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+            </button>
+          </div>
+        </article>
+
+        <article class="project-card glass card-hover rounded-2xl overflow-hidden"
+          data-category="datos" data-name="Análisis Estadístico de Mercado"
+          data-tech="R, SQL, Power BI" data-icon="pie-chart"
+          data-gradient="bg-gradient-to-br from-cyan-500 to-qpurple"
+          data-full-desc="Estudio estadístico de comportamiento de mercado y segmentación de clientes que orientó la estrategia comercial de un cliente retail durante dos trimestres."
+          data-aos="fade-up" data-aos-delay="160">
+          <div class="bg-gradient-to-br from-cyan-500 to-qpurple h-44 flex items-center justify-center">
+            <i data-lucide="pie-chart" class="w-12 h-12 text-white/90"></i>
+          </div>
+          <div class="p-6">
+            <span class="text-xs font-semibold text-qblue dark:text-blue-400 uppercase tracking-wide">Ciencia de Datos</span>
+            <h3 class="font-display text-lg font-semibold mt-2 mb-2">Análisis Estadístico de Mercado</h3>
+            <p class="text-sm text-slate-600 dark:text-slate-400 mb-4">Segmentación de clientes y estudio de mercado para definir estrategia comercial.</p>
+            <div class="flex flex-wrap gap-2 mb-5">
+              <span class="px-3 py-1 text-xs rounded-full bg-blue-500/10 text-blue-500 dark:text-blue-300 border border-blue-500/20">R</span>
+              <span class="px-3 py-1 text-xs rounded-full bg-blue-500/10 text-blue-500 dark:text-blue-300 border border-blue-500/20">SQL</span>
+              <span class="px-3 py-1 text-xs rounded-full bg-blue-500/10 text-blue-500 dark:text-blue-300 border border-blue-500/20">Power BI</span>
+            </div>
+            <button data-open-modal class="text-sm font-semibold text-qblue dark:text-blue-400 inline-flex items-center gap-1.5 hover:gap-2.5 transition-all">
+              Ver detalles <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+            </button>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== DASHBOARD VISUAL ===================== -->
+  <section id="dashboard" class="py-24 px-5 sm:px-8 relative">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center max-w-2xl mx-auto mb-14" data-aos="fade-up">
+        <span class="text-qblue dark:text-blue-400 font-semibold text-sm tracking-widest uppercase">Dashboard visual</span>
+        <h2 class="font-display text-3xl sm:text-4xl font-bold mt-3 mb-4">Los datos hablan por sí solos</h2>
+        <p class="text-slate-600 dark:text-slate-400">Una simulación de cómo transformamos datos crudos en indicadores claros y accionables.</p>
+      </div>
+
+      <!-- KPIs -->
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-5 mb-10">
+        <div class="glass rounded-2xl p-6 text-center" data-aos="fade-up">
+          <p class="kpi-number font-display text-3xl sm:text-4xl font-bold gradient-text"><span data-count="120" data-suffix="+">0</span></p>
+          <p class="text-xs sm:text-sm text-slate-500 dark:text-slate-400 mt-2">Proyectos completados</p>
+        </div>
+        <div class="glass rounded-2xl p-6 text-center" data-aos="fade-up" data-aos-delay="80">
+          <p class="kpi-number font-display text-3xl sm:text-4xl font-bold gradient-text"><span data-count="96.5" data-suffix="%">0</span></p>
+          <p class="text-xs sm:text-sm text-slate-500 dark:text-slate-400 mt-2">Precisión promedio de modelos</p>
+        </div>
+        <div class="glass rounded-2xl p-6 text-center" data-aos="fade-up" data-aos-delay="160">
+          <p class="kpi-number font-display text-3xl sm:text-4xl font-bold gradient-text"><span data-count="8.4" data-suffix="M">0</span></p>
+          <p class="text-xs sm:text-sm text-slate-500 dark:text-slate-400 mt-2">Registros de datos procesados</p>
+        </div>
+        <div class="glass rounded-2xl p-6 text-center" data-aos="fade-up" data-aos-delay="240">
+          <p class="kpi-number font-display text-3xl sm:text-4xl font-bold gradient-text"><span data-count="98" data-suffix="%">0</span></p>
+          <p class="text-xs sm:text-sm text-slate-500 dark:text-slate-400 mt-2">Clientes satisfechos</p>
+        </div>
+      </div>
+
+      <!-- Gráficos -->
+      <div class="grid lg:grid-cols-3 gap-6">
+        <div class="glass rounded-2xl p-6 lg:col-span-2" data-aos="fade-up">
+          <h3 class="font-display font-semibold mb-4">Tendencia de datos procesados</h3>
+          <div class="chart-box"><canvas id="chartDatosProcesados"></canvas></div>
+        </div>
+        <div class="glass rounded-2xl p-6" data-aos="fade-up" data-aos-delay="100">
+          <h3 class="font-display font-semibold mb-4">Distribución de servicios</h3>
+          <div class="chart-box"><canvas id="chartServicios"></canvas></div>
+        </div>
+        <div class="glass rounded-2xl p-6 lg:col-span-3" data-aos="fade-up" data-aos-delay="150">
+          <h3 class="font-display font-semibold mb-4">Precisión de modelos por proyecto</h3>
+          <div class="chart-box"><canvas id="chartPrecision"></canvas></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== TECNOLOGÍAS ===================== -->
+  <section id="tecnologias" class="py-24 px-5 sm:px-8 bg-slate-50 dark:bg-qdark-2/40">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center max-w-2xl mx-auto mb-14" data-aos="fade-up">
+        <span class="text-qblue dark:text-blue-400 font-semibold text-sm tracking-widest uppercase">Stack tecnológico</span>
+        <h2 class="font-display text-3xl sm:text-4xl font-bold mt-3 mb-4">Tecnologías que utilizamos</h2>
+        <p class="text-slate-600 dark:text-slate-400">Herramientas robustas y comprobadas para llevar cada proyecto a producción.</p>
+      </div>
+
+      <div class="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-7 gap-5">
+        <div class="tech-card glass card-hover rounded-2xl p-5 flex flex-col items-center gap-3" data-aos="zoom-in">
+          <i class="devicon-python-plain colored tech-icon text-4xl"></i>
+          <span class="text-xs font-medium text-slate-600 dark:text-slate-400">Python</span>
+        </div>
+        <div class="tech-card glass card-hover rounded-2xl p-5 flex flex-col items-center gap-3" data-aos="zoom-in" data-aos-delay="50">
+          <i class="devicon-r-plain colored tech-icon text-4xl"></i>
+          <span class="text-xs font-medium text-slate-600 dark:text-slate-400">R</span>
+        </div>
+        <div class="tech-card glass card-hover rounded-2xl p-5 flex flex-col items-center gap-3" data-aos="zoom-in" data-aos-delay="100">
+          <i data-lucide="database" class="tech-icon w-9 h-9 text-qblue"></i>
+          <span class="text-xs font-medium text-slate-600 dark:text-slate-400">SQL</span>
+        </div>
+        <div class="tech-card glass card-hover rounded-2xl p-5 flex flex-col items-center gap-3" data-aos="zoom-in" data-aos-delay="150">
+          <i data-lucide="bar-chart-4" class="tech-icon w-9 h-9 text-yellow-500"></i>
+          <span class="text-xs font-medium text-slate-600 dark:text-slate-400">Power BI</span>
+        </div>
+        <div class="tech-card glass card-hover rounded-2xl p-5 flex flex-col items-center gap-3" data-aos="zoom-in" data-aos-delay="200">
+          <i class="devicon-tensorflow-original colored tech-icon text-4xl"></i>
+          <span class="text-xs font-medium text-slate-600 dark:text-slate-400">TensorFlow</span>
+        </div>
+        <div class="tech-card glass card-hover rounded-2xl p-5 flex flex-col items-center gap-3" data-aos="zoom-in" data-aos-delay="250">
+          <i class="devicon-javascript-plain colored tech-icon text-4xl"></i>
+          <span class="text-xs font-medium text-slate-600 dark:text-slate-400">JavaScript</span>
+        </div>
+        <div class="tech-card glass card-hover rounded-2xl p-5 flex flex-col items-center gap-3" data-aos="zoom-in" data-aos-delay="300">
+          <div class="flex gap-1">
+            <i class="devicon-html5-plain colored tech-icon text-4xl"></i>
+            <i class="devicon-css3-plain colored tech-icon text-4xl"></i>
+          </div>
+          <span class="text-xs font-medium text-slate-600 dark:text-slate-400">HTML/CSS</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== SOBRE NOSOTROS ===================== -->
+  <section id="nosotros" class="py-24 px-5 sm:px-8 relative overflow-hidden">
+    <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
+      <div data-aos="fade-right">
+        <span class="text-qblue dark:text-blue-400 font-semibold text-sm tracking-widest uppercase">Sobre nosotros</span>
+        <h2 class="font-display text-3xl sm:text-4xl font-bold mt-3 mb-6">Inteligencia basada en datos</h2>
+        <p class="text-slate-600 dark:text-slate-400 mb-6 leading-relaxed">
+          En Quantory creemos que cada dato cuenta una historia. Somos un equipo multidisciplinario de científicos de datos, estadísticos e ingenieros de software enfocados en convertir información compleja en decisiones claras y en soluciones digitales de alto impacto.
+        </p>
+        <p class="text-slate-600 dark:text-slate-400 mb-8 leading-relaxed">
+          Nuestra filosofía combina el rigor analítico con la agilidad de una startup tecnológica: iteramos rápido, medimos resultados y priorizamos siempre el valor real para el cliente.
+        </p>
+
+        <div class="space-y-4 mb-8">
+          <div class="flex items-start gap-3">
+            <div class="w-9 h-9 rounded-lg bg-qblue/10 flex items-center justify-center shrink-0">
+              <i data-lucide="target" class="w-4 h-4 text-qblue"></i>
+            </div>
+            <div>
+              <p class="font-semibold text-sm">Nuestro objetivo</p>
+              <p class="text-sm text-slate-500 dark:text-slate-400">Democratizar el acceso a la ciencia de datos y la IA para empresas de todos los tamaños.</p>
+            </div>
+          </div>
+          <div class="flex items-start gap-3">
+            <div class="w-9 h-9 rounded-lg bg-qpurple/10 flex items-center justify-center shrink-0">
+              <i data-lucide="compass" class="w-4 h-4 text-qpurple"></i>
+            </div>
+            <div>
+              <p class="font-semibold text-sm">Nuestra filosofía</p>
+              <p class="text-sm text-slate-500 dark:text-slate-400">Decisiones basadas en evidencia, procesos transparentes y tecnología al servicio de las personas.</p>
+            </div>
+          </div>
+        </div>
+
+        <a href="#contacto" class="btn-primary text-white font-semibold px-7 py-3.5 rounded-full inline-flex items-center gap-2">
+          Trabajemos juntos <i data-lucide="arrow-right" class="w-4 h-4"></i>
+        </a>
+      </div>
+
+      <div class="relative flex justify-center" data-aos="fade-left">
+        <div class="absolute w-72 h-72 bg-gradient-to-tr from-qpurple to-qblue rounded-full blur-3xl opacity-25"></div>
+        <div class="relative glass rounded-3xl p-10 sm:p-14">
+          <img src="Imagenes/Quantory_ícono.png" alt="Quantory" class="w-48 sm:w-60 mx-auto" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== CONTACTO ===================== -->
+  <section id="contacto" class="py-24 px-5 sm:px-8 bg-slate-50 dark:bg-qdark-2/40 relative">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center max-w-2xl mx-auto mb-14" data-aos="fade-up">
+        <span class="text-qblue dark:text-blue-400 font-semibold text-sm tracking-widest uppercase">Contacto</span>
+        <h2 class="font-display text-3xl sm:text-4xl font-bold mt-3 mb-4">Hablemos de tu próximo proyecto</h2>
+        <p class="text-slate-600 dark:text-slate-400">Cuéntanos qué necesitas y te responderemos en menos de 24 horas.</p>
+      </div>
+
+      <div class="grid lg:grid-cols-5 gap-8">
+        <!-- Formulario -->
+        <form id="contact-form" class="lg:col-span-3 glass rounded-2xl p-8 space-y-5" data-aos="fade-up" novalidate>
+          <div class="grid sm:grid-cols-2 gap-5">
+            <div>
+              <label class="block text-sm font-medium mb-2" for="name">Nombre</label>
+              <input required id="name" name="name" type="text" placeholder="Tu nombre"
+                class="w-full px-4 py-3 rounded-xl bg-white/70 dark:bg-white/5 border border-slate-300 dark:border-white/10 focus:outline-none focus:ring-2 focus:ring-qblue text-sm" />
+            </div>
+            <div>
+              <label class="block text-sm font-medium mb-2" for="email">Correo electrónico</label>
+              <input required id="email" name="email" type="email" placeholder="tucorreo@ejemplo.com"
+                class="w-full px-4 py-3 rounded-xl bg-white/70 dark:bg-white/5 border border-slate-300 dark:border-white/10 focus:outline-none focus:ring-2 focus:ring-qblue text-sm" />
+            </div>
+          </div>
+          <div>
+            <label class="block text-sm font-medium mb-2" for="subject">Asunto</label>
+            <input required id="subject" name="subject" type="text" placeholder="¿En qué podemos ayudarte?"
+              class="w-full px-4 py-3 rounded-xl bg-white/70 dark:bg-white/5 border border-slate-300 dark:border-white/10 focus:outline-none focus:ring-2 focus:ring-qblue text-sm" />
+          </div>
+          <div>
+            <label class="block text-sm font-medium mb-2" for="message">Mensaje</label>
+            <textarea required id="message" name="message" rows="5" placeholder="Cuéntanos sobre tu proyecto..."
+              class="w-full px-4 py-3 rounded-xl bg-white/70 dark:bg-white/5 border border-slate-300 dark:border-white/10 focus:outline-none focus:ring-2 focus:ring-qblue text-sm resize-none"></textarea>
+          </div>
+          <button type="submit" class="btn-primary text-white font-semibold px-7 py-3.5 rounded-full inline-flex items-center gap-2">
+            Enviar mensaje <i data-lucide="send" class="w-4 h-4"></i>
+          </button>
+        </form>
+
+        <!-- Info de contacto -->
+        <div class="lg:col-span-2 space-y-5" data-aos="fade-up" data-aos-delay="100">
+          <a href="https://wa.me/50000000000" target="_blank" rel="noopener" class="glass card-hover rounded-2xl p-5 flex items-center gap-4">
+            <div class="w-11 h-11 rounded-xl bg-green-500/15 flex items-center justify-center shrink-0">
+              <i class="fa-brands fa-whatsapp text-xl text-green-500"></i>
+            </div>
+            <div>
+              <p class="font-semibold text-sm">WhatsApp</p>
+              <p class="text-xs text-slate-500 dark:text-slate-400">+500 000 0000</p>
+            </div>
+          </a>
+          <a href="mailto:contacto@quantory.com" class="glass card-hover rounded-2xl p-5 flex items-center gap-4">
+            <div class="w-11 h-11 rounded-xl bg-qblue/15 flex items-center justify-center shrink-0">
+              <i data-lucide="mail" class="w-5 h-5 text-qblue"></i>
+            </div>
+            <div>
+              <p class="font-semibold text-sm">Correo</p>
+              <p class="text-xs text-slate-500 dark:text-slate-400">contacto@quantory.com</p>
+            </div>
+          </a>
+          <div class="glass rounded-2xl p-5">
+            <p class="font-semibold text-sm mb-4">Síguenos</p>
+            <div class="flex gap-3">
+              <a href="#" aria-label="LinkedIn" class="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:border-qblue transition-colors"><i class="fa-brands fa-linkedin-in"></i></a>
+              <a href="#" aria-label="Instagram" class="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:border-qblue transition-colors"><i class="fa-brands fa-instagram"></i></a>
+              <a href="#" aria-label="X / Twitter" class="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:border-qblue transition-colors"><i class="fa-brands fa-x-twitter"></i></a>
+              <a href="#" aria-label="GitHub" class="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:border-qblue transition-colors"><i class="fa-brands fa-github"></i></a>
+            </div>
+          </div>
+          <div class="glass rounded-2xl p-5 flex items-center gap-3">
+            <i data-lucide="map-pin" class="w-5 h-5 text-qpurple shrink-0"></i>
+            <p class="text-xs text-slate-500 dark:text-slate-400">Atención remota para clientes en toda Latinoamérica.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ===================== FOOTER ===================== -->
+<footer class="border-t border-slate-200 dark:border-white/5 py-10 px-5 sm:px-8">
+  <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-6">
+    <img src="Imagenes/Quantory_logo_cropped.png" alt="Quantory" class="h-8 w-auto dark:hidden" />
+    <img src="Imagenes/Quantory_logo_cropped_oscuro.png" alt="Quantory" class="hidden dark:block h-8 w-auto" />
+    <p class="text-xs text-slate-500 dark:text-slate-500">&copy; <span id="year"></span> Quantory. Todos los derechos reservados.</p>
+    <div class="flex gap-4 text-slate-400">
+      <a href="#" aria-label="LinkedIn" class="hover:text-qblue transition-colors"><i class="fa-brands fa-linkedin-in"></i></a>
+      <a href="#" aria-label="Instagram" class="hover:text-qblue transition-colors"><i class="fa-brands fa-instagram"></i></a>
+      <a href="#" aria-label="X / Twitter" class="hover:text-qblue transition-colors"><i class="fa-brands fa-x-twitter"></i></a>
+      <a href="#" aria-label="GitHub" class="hover:text-qblue transition-colors"><i class="fa-brands fa-github"></i></a>
+    </div>
+  </div>
+</footer>
+
+<!-- ===================== BOTÓN FLOTANTE WHATSAPP ===================== -->
+<a id="whatsapp-float" href="https://wa.me/50000000000" target="_blank" rel="noopener" aria-label="Escríbenos por WhatsApp"
+  class="w-14 h-14 rounded-full bg-green-500 hover:bg-green-600 flex items-center justify-center transition-colors">
+  <i class="fa-brands fa-whatsapp text-white text-2xl"></i>
+</a>
+
+<!-- ===================== MODAL DE PROYECTO ===================== -->
+<div id="project-modal" data-open="false" class="fixed inset-0 z-50 flex items-center justify-center p-5 bg-black/70 backdrop-blur-sm">
+  <div class="modal-panel glass w-full max-w-lg rounded-2xl p-6 sm:p-8 relative">
+    <button data-close-modal aria-label="Cerrar" class="absolute top-4 right-4 w-9 h-9 rounded-full flex items-center justify-center hover:bg-white/10 transition-colors">
+      <i data-lucide="x" class="w-5 h-5"></i>
+    </button>
+    <div data-modal-image class="bg-gradient-to-br from-qblue to-qpurple w-full h-48 sm:h-56 rounded-xl flex items-center justify-center mb-6"></div>
+    <h3 data-modal-title class="font-display text-xl font-bold mb-3"></h3>
+    <p data-modal-desc class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed mb-5"></p>
+    <div data-modal-tech class="flex flex-wrap gap-2"></div>
+  </div>
+  <div data-close-modal class="absolute inset-0 -z-10"></div>
+</div>
+
+<!-- ===================== TOAST ===================== -->
+<div id="toast" class="fixed bottom-6 left-1/2 -translate-x-1/2 translate-y-24 opacity-0 z-50 glass rounded-full px-6 py-3 flex items-center gap-2 text-sm font-medium">
+  <i data-lucide="check-circle" class="w-4 h-4 text-green-400"></i>
+  ¡Mensaje enviado con éxito! Te contactaremos pronto.
+</div>
+
+<!-- ===================== SCRIPTS ===================== -->
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script src="https://unpkg.com/lucide@latest"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4"></script>
+<script src="https://cdn.jsdelivr.net/npm/tsparticles@2/tsparticles.bundle.min.js"></script>
+
+<script src="js/particles-config.js"></script>
+<script src="js/charts.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>

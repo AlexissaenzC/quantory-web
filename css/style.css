@@ -1,0 +1,251 @@
+/* ==========================================================================
+Quantory — Estilos personalizados (complementan Tailwind CSS)
+   ========================================================================== */
+
+:root {
+  --q-blue: #3b82f6;
+  --q-blue-dark: #2563eb;
+  --q-purple: #8b5cf6;
+  --q-purple-dark: #7c3aed;
+  --q-dark: #030712;
+  --q-dark-2: #0b0f19;
+}
+
+* {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Inter", sans-serif;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, .font-display {
+  font-family: "Sora", sans-serif;
+}
+
+/* ---------- Scrollbar ---------- */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, var(--q-blue), var(--q-purple));
+  border-radius: 999px;
+}
+
+/* ---------- Loader ---------- */
+#loader {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--q-dark);
+  transition: opacity 0.6s ease, visibility 0.6s ease;
+}
+#loader.loader-hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+.loader-ring {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  border: 3px solid rgba(139, 92, 246, 0.15);
+  border-top-color: var(--q-blue);
+  border-right-color: var(--q-purple);
+  animation: spin 0.9s linear infinite;
+}
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ---------- Glassmorphism ---------- */
+.glass {
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+.light .glass,
+html:not(.dark) .glass {
+  background: rgba(255, 255, 255, 0.55);
+  border: 1px solid rgba(15, 23, 42, 0.08);
+}
+
+/* ---------- Gradient text / backgrounds ---------- */
+.gradient-text {
+  background: linear-gradient(90deg, #60a5fa, #a78bfa 50%, #60a5fa);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: gradient-shift 6s ease infinite;
+}
+@keyframes gradient-shift {
+  0% { background-position: 0% center; }
+  50% { background-position: 100% center; }
+  100% { background-position: 0% center; }
+}
+
+.btn-primary {
+  background: linear-gradient(90deg, var(--q-blue-dark), var(--q-purple-dark));
+  transition: transform 0.25s ease, box-shadow 0.25s ease, filter 0.25s ease;
+  box-shadow: 0 8px 30px -8px rgba(99, 102, 241, 0.6);
+}
+.btn-primary:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.12);
+  box-shadow: 0 12px 40px -6px rgba(99, 102, 241, 0.75);
+}
+
+.btn-outline {
+  border: 1px solid rgba(148, 163, 184, 0.35);
+  transition: all 0.25s ease;
+}
+.btn-outline:hover {
+  border-color: var(--q-blue);
+  background: rgba(59, 130, 246, 0.08);
+  transform: translateY(-2px);
+}
+
+/* ---------- Particles background ---------- */
+#tsparticles {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+/* ---------- Blobs ---------- */
+.blob {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(90px);
+  opacity: 0.35;
+  pointer-events: none;
+  animation: float 10s ease-in-out infinite;
+}
+@keyframes float {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(20px, -30px) scale(1.08); }
+}
+
+/* ---------- Card hover ---------- */
+.card-hover {
+  transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
+}
+.card-hover:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 45px -15px rgba(59, 130, 246, 0.35);
+  border-color: rgba(139, 92, 246, 0.45);
+}
+
+/* ---------- Nav link underline ---------- */
+.nav-link {
+  position: relative;
+}
+.nav-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 0%;
+  height: 2px;
+  background: linear-gradient(90deg, var(--q-blue), var(--q-purple));
+  transition: width 0.3s ease;
+}
+.nav-link:hover::after,
+.nav-link.active::after {
+  width: 100%;
+}
+
+/* ---------- Tech logo card ---------- */
+.tech-card i,
+.tech-card .tech-icon {
+  filter: grayscale(1) opacity(0.65);
+  transition: filter 0.35s ease, transform 0.35s ease;
+}
+.tech-card:hover i,
+.tech-card:hover .tech-icon {
+  filter: grayscale(0) opacity(1);
+  transform: scale(1.15);
+}
+
+/* ---------- Project filter ---------- */
+.filter-btn.active {
+  background: linear-gradient(90deg, var(--q-blue-dark), var(--q-purple-dark));
+  color: #fff;
+  border-color: transparent;
+}
+
+.project-card {
+  display: block;
+}
+.project-card[data-hidden="true"] {
+  display: none;
+}
+
+/* ---------- KPI counter ---------- */
+.kpi-number {
+  font-variant-numeric: tabular-nums;
+}
+
+/* ---------- WhatsApp float button ---------- */
+#whatsapp-float {
+  position: fixed;
+  right: 1.5rem;
+  bottom: 1.5rem;
+  z-index: 50;
+  box-shadow: 0 10px 30px -8px rgba(34, 197, 94, 0.6);
+  animation: pulse-wa 2.4s ease-in-out infinite;
+}
+@keyframes pulse-wa {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.55), 0 10px 30px -8px rgba(34,197,94,.6); }
+  50% { box-shadow: 0 0 0 12px rgba(34, 197, 94, 0), 0 10px 30px -8px rgba(34,197,94,.6); }
+}
+
+/* ---------- Modal ---------- */
+#project-modal {
+  transition: opacity 0.3s ease;
+}
+#project-modal[data-open="false"] {
+  opacity: 0;
+  pointer-events: none;
+}
+#project-modal[data-open="true"] {
+  opacity: 1;
+  pointer-events: auto;
+}
+#project-modal .modal-panel {
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+#project-modal[data-open="false"] .modal-panel {
+  transform: translateY(16px) scale(0.98);
+  opacity: 0;
+}
+#project-modal[data-open="true"] .modal-panel {
+  transform: translateY(0) scale(1);
+  opacity: 1;
+}
+
+/* ---------- Toast ---------- */
+#toast {
+  transition: transform 0.35s ease, opacity 0.35s ease;
+}
+
+/* ---------- Chart container ---------- */
+.chart-box {
+  position: relative;
+  height: 280px;
+}
+
+/* ---------- Mobile menu ---------- */
+#mobile-menu {
+  transition: max-height 0.35s ease, opacity 0.3s ease;
+  overflow: hidden;
+}
