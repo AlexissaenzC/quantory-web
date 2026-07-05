@@ -1,6 +1,13 @@
 <?php
 header('Content-Type: application/json; charset=utf-8');
 
+require __DIR__ . '/phpmailer/Exception.php';
+require __DIR__ . '/phpmailer/PHPMailer.php';
+require __DIR__ . '/phpmailer/SMTP.php';
+
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+
 $destination = 'quantorycompany@gmail.com';
 
 function respond($ok, $message) {
@@ -33,27 +40,32 @@ if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
     respond(false, 'El correo electrónico no es válido.');
 }
 
-// Evita inyección de cabeceras (header injection) quitando saltos de línea.
-$clean = fn($v) => str_replace(["\r", "\n"], '', $v);
-$name    = $clean($name);
-$email   = $clean($email);
-$subject = $clean($subject);
+$config = require __DIR__ . '/mail-config.php';
 
-$mailSubject = "[Quantory] Nuevo mensaje: $subject";
-$body = "Nombre: $name\n" .
-        "Correo: $email\n" .
-        "Asunto: $subject\n\n" .
-        "Mensaje:\n$message\n";
+$mail = new PHPMailer(true);
+try {
+    $mail->isSMTP();
+    $mail->Host       = $config['smtp_host'];
+    $mail->Port       = $config['smtp_port'];
+    $mail->SMTPAuth   = true;
+    $mail->Username   = $config['smtp_user'];
+    $mail->Password   = $config['smtp_pass'];
+    $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+    $mail->CharSet    = 'UTF-8';
 
-$headers = "From: Quantory Web <no-reply@" . ($_SERVER['HTTP_HOST'] ?? 'quantory.com') . ">\r\n" .
-           "Reply-To: $name <$email>\r\n" .
-           "Content-Type: text/plain; charset=UTF-8";
+    $mail->setFrom($config['smtp_user'], 'Quantory Web');
+    $mail->addAddress($destination);
+    $mail->addReplyTo($email, $name);
 
-$sent = mail($destination, $mailSubject, $body, $headers);
+    $mail->Subject = "[Quantory] Nuevo mensaje: $subject";
+    $mail->Body    = "Nombre: $name\n" .
+                      "Correo: $email\n" .
+                      "Asunto: $subject\n\n" .
+                      "Mensaje:\n$message\n";
 
-if ($sent) {
+    $mail->send();
     respond(true, 'Mensaje enviado con éxito.');
-} else {
+} catch (Exception $e) {
     http_response_code(500);
     respond(false, 'No se pudo enviar el mensaje. Intenta más tarde.');
 }
