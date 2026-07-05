@@ -210,27 +210,35 @@ html:not(.dark) .glass {
 }
 
 /* ---------- Modal ---------- */
-#project-modal {
+.modal {
   transition: opacity 0.3s ease;
 }
-#project-modal[data-open="false"] {
+.modal[data-open="false"] {
   opacity: 0;
   pointer-events: none;
 }
-#project-modal[data-open="true"] {
+.modal[data-open="true"] {
   opacity: 1;
   pointer-events: auto;
 }
-#project-modal .modal-panel {
+.modal .modal-panel {
   transition: transform 0.3s ease, opacity 0.3s ease;
 }
-#project-modal[data-open="false"] .modal-panel {
+.modal[data-open="false"] .modal-panel {
   transform: translateY(16px) scale(0.98);
   opacity: 0;
 }
-#project-modal[data-open="true"] .modal-panel {
+.modal[data-open="true"] .modal-panel {
   transform: translateY(0) scale(1);
   opacity: 1;
+}
+
+/* ---------- Course syllabus accordion ---------- */
+details > summary {
+  list-style: none;
+}
+details > summary::-webkit-details-marker {
+  display: none;
 }
 
 /* ---------- Toast ---------- */

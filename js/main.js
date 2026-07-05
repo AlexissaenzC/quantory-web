@@ -145,6 +145,26 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+  /* ---------- Modal de curso ---------- */
+  const courseModal = document.getElementById("course-modal");
+  if (courseModal) {
+    const openCourseModal = () => {
+      courseModal.setAttribute("data-open", "true");
+      document.body.classList.add("overflow-hidden");
+    };
+    const closeCourseModal = () => {
+      courseModal.setAttribute("data-open", "false");
+      document.body.classList.remove("overflow-hidden");
+    };
+    document.querySelectorAll("[data-open-course-modal]").forEach((btn) => {
+      btn.addEventListener("click", openCourseModal);
+    });
+    courseModal.querySelectorAll("[data-close-modal]").forEach((el) => el.addEventListener("click", closeCourseModal));
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") closeCourseModal();
+    });
+  }
+
   /* ---------- Contador animado de KPIs ---------- */
   const counters = document.querySelectorAll("[data-count]");
   const animateCounter = (el) => {
