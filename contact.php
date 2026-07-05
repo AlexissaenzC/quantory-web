@@ -66,6 +66,7 @@ try {
     $mail->send();
     respond(true, 'Mensaje enviado con éxito.');
 } catch (Exception $e) {
+    error_log('Mail error: ' . $mail->ErrorInfo);
     http_response_code(500);
     respond(false, 'No se pudo enviar el mensaje. Intenta más tarde.');
 }
