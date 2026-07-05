@@ -582,7 +582,8 @@
 
       <div class="grid lg:grid-cols-5 gap-8">
         <!-- Formulario -->
-        <form id="contact-form" class="lg:col-span-3 glass rounded-2xl p-8 space-y-5" data-aos="fade-up" novalidate>
+        <form id="contact-form" action="contact.php" method="POST" class="lg:col-span-3 glass rounded-2xl p-8 space-y-5" data-aos="fade-up" novalidate>
+          <input type="text" name="website" class="hidden" tabindex="-1" autocomplete="off" />
           <div class="grid sm:grid-cols-2 gap-5">
             <div>
               <label class="block text-sm font-medium mb-2" for="name">Nombre</label>
@@ -821,8 +822,8 @@
 
 <!-- ===================== TOAST ===================== -->
 <div id="toast" class="fixed bottom-6 left-1/2 -translate-x-1/2 translate-y-24 opacity-0 z-50 glass rounded-full px-6 py-3 flex items-center gap-2 text-sm font-medium">
-  <i data-lucide="check-circle" class="w-4 h-4 text-green-400"></i>
-  ¡Mensaje enviado con éxito! Te contactaremos pronto.
+  <i data-toast-icon data-lucide="check-circle" class="w-4 h-4 text-green-400"></i>
+  <span data-toast-text>¡Mensaje enviado con éxito! Te contactaremos pronto.</span>
 </div>
 
 <!-- ===================== SCRIPTS ===================== -->

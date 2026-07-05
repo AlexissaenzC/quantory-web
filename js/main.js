@@ -198,17 +198,43 @@ document.addEventListener("DOMContentLoaded", () => {
   /* ---------- Formulario de contacto ---------- */
   const contactForm = document.getElementById("contact-form");
   const toast = document.getElementById("toast");
+  const toastIcon = toast ? toast.querySelector("[data-toast-icon]") : null;
+  const toastText = toast ? toast.querySelector("[data-toast-text]") : null;
+
+  const showToast = (ok, message) => {
+    if (!toast) return;
+    toastText.textContent = message;
+    toastIcon.setAttribute("data-lucide", ok ? "check-circle" : "alert-circle");
+    toastIcon.classList.toggle("text-green-400", ok);
+    toastIcon.classList.toggle("text-red-400", !ok);
+    if (window.lucide) lucide.createIcons();
+    toast.classList.remove("translate-y-24", "opacity-0");
+    setTimeout(() => toast.classList.add("translate-y-24", "opacity-0"), 3800);
+  };
+
   if (contactForm) {
-    contactForm.addEventListener("submit", (e) => {
+    contactForm.addEventListener("submit", async (e) => {
       e.preventDefault();
       if (!contactForm.checkValidity()) {
         contactForm.reportValidity();
         return;
       }
-      contactForm.reset();
-      if (toast) {
-        toast.classList.remove("translate-y-24", "opacity-0");
-        setTimeout(() => toast.classList.add("translate-y-24", "opacity-0"), 3800);
+      const submitBtn = contactForm.querySelector('button[type="submit"]');
+      submitBtn.disabled = true;
+      submitBtn.classList.add("opacity-60", "cursor-not-allowed");
+      try {
+        const res = await fetch(contactForm.action, {
+          method: "POST",
+          body: new FormData(contactForm),
+        });
+        const data = await res.json();
+        showToast(data.ok, data.message);
+        if (data.ok) contactForm.reset();
+      } catch (err) {
+        showToast(false, "No se pudo enviar el mensaje. Intenta más tarde.");
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.classList.remove("opacity-60", "cursor-not-allowed");
       }
     });
   }
